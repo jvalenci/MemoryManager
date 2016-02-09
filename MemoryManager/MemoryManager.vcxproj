@@ -146,12 +146,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\MemoryManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\testMemMgr.cpp" />
+    <ClCompile Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\MemoryManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\testMemMgr.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\blocknode.h" />
-    <ClInclude Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\MemoryManager.h" />
+    <ClInclude Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\blocknode.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Downloads\MemoryManager\MemoryManager\MemoryManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
