@@ -62,13 +62,13 @@ unsigned char * MemoryManager::malloc(unsigned int request)
 	//make a copy of the first block
 	blocknode *head = this->firstBlock;
 
-	//make the new node to be inserted
-	blocknode *insertNode = new blocknode(head->bsize - request, nullptr, true);
-
 	while (head)
 	{
 		if (head->free && head->bsize >= request)
 		{
+			//make the new node to be inserted
+			blocknode *insertNode = new blocknode(head->bsize - request, nullptr, true);
+
 			if (head->bsize == request)
 			{
 				//doesn't need to be split so change the node to not be free and return the block of memory that it points to.
@@ -110,12 +110,16 @@ void MemoryManager::splitBlock(blocknode *p, unsigned int chunksize)
 	
 	//insert node
 	blocknode *insertNode = new blocknode((p->bsize - chunksize),nullptr,true, p);
+	if (p->next)
+	{
+		insertNode->next = p->next;
+	}
 	
 	p->bsize = chunksize;
 	p->free = false;
 	p->next = insertNode;
 
-	insertNode->bptr = p->bptr + p->bsize;
+	insertNode->bptr = p->bptr + chunksize;
 
 }
 
